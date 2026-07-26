@@ -1,18 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 import utilities.WaitUtils;
 
 public class RegistrationPage {
 
     private WebDriver driver;
-
-    //=========================
-    // Constructor
-    //=========================
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
@@ -28,14 +24,14 @@ public class RegistrationPage {
     private By txtPincode = By.id("pincode");
 
     //=========================
-    // Dropdown Locators
+    // Material UI Dropdown Locators
     //=========================
 
     private By ddlState = By.id("state");
     private By ddlDistrict = By.id("district");
-    private By ddlPrincipalActivity = By.id("principalActivity");
-    private By ddlCategory = By.id("category");
-    private By ddlInstitutionType = By.id("institutionType");
+    private By ddlPrincipalActivity = By.id("principalActivityId");
+    private By ddlCategory = By.id("categoryId");
+    private By ddlInstitutionType = By.id("institutionTypeId");
 
     //=========================
     // Button Locator
@@ -48,80 +44,71 @@ public class RegistrationPage {
     //=========================
 
     public void enterInstituteName(String name) {
-
-        WaitUtils.waitForVisible(driver, txtInstituteName)
-                 .sendKeys(name);
+        WaitUtils.waitForVisible(driver, txtInstituteName).sendKeys(name);
     }
 
     public void enterAddress(String address) {
-
-        WaitUtils.waitForVisible(driver, txtAddress)
-                 .sendKeys(address);
+        WaitUtils.waitForVisible(driver, txtAddress).sendKeys(address);
     }
 
     public void enterCity(String city) {
-
-        WaitUtils.waitForVisible(driver, txtCity)
-                 .sendKeys(city);
+        WaitUtils.waitForVisible(driver, txtCity).sendKeys(city);
     }
 
     public void enterPincode(String pincode) {
-
-        WaitUtils.waitForVisible(driver, txtPincode)
-                 .sendKeys(pincode);
+        WaitUtils.waitForVisible(driver, txtPincode).sendKeys(pincode);
     }
 
     //=========================
-    // Dropdown Methods
+    // Material UI Dropdown Methods
     //=========================
 
     public void selectState(String state) {
 
-        Select select = new Select(
-                WaitUtils.waitForVisible(driver, ddlState));
-
-        select.selectByVisibleText(state);
+        WaitUtils.waitForVisible(driver, ddlState).click();
+        WaitUtils.waitForVisible(driver, ddlState).sendKeys(state);
+        WaitUtils.waitForVisible(driver, ddlState).sendKeys(Keys.ARROW_DOWN);
+        WaitUtils.waitForVisible(driver, ddlState).sendKeys(Keys.ENTER);
     }
 
     public void selectDistrict(String district) {
 
-        Select select = new Select(
-                WaitUtils.waitForVisible(driver, ddlDistrict));
-
-        select.selectByVisibleText(district);
+        WaitUtils.waitForVisible(driver, ddlDistrict).click();
+        WaitUtils.waitForVisible(driver, ddlDistrict).sendKeys(district);
+        WaitUtils.waitForVisible(driver, ddlDistrict).sendKeys(Keys.ARROW_DOWN);
+        WaitUtils.waitForVisible(driver, ddlDistrict).sendKeys(Keys.ENTER);
     }
 
     public void selectPrincipalActivity(String activity) {
 
-        Select select = new Select(
-                WaitUtils.waitForVisible(driver, ddlPrincipalActivity));
-
-        select.selectByVisibleText(activity);
+        WaitUtils.waitForVisible(driver, ddlPrincipalActivity).click();
+        WaitUtils.waitForVisible(driver, ddlPrincipalActivity).sendKeys(activity);
+        WaitUtils.waitForVisible(driver, ddlPrincipalActivity).sendKeys(Keys.ARROW_DOWN);
+        WaitUtils.waitForVisible(driver, ddlPrincipalActivity).sendKeys(Keys.ENTER);
     }
 
     public void selectCategory(String category) {
 
-        Select select = new Select(
-                WaitUtils.waitForVisible(driver, ddlCategory));
-
-        select.selectByVisibleText(category);
+        WaitUtils.waitForVisible(driver, ddlCategory).click();
+        WaitUtils.waitForVisible(driver, ddlCategory).sendKeys(category);
+        WaitUtils.waitForVisible(driver, ddlCategory).sendKeys(Keys.ARROW_DOWN);
+        WaitUtils.waitForVisible(driver, ddlCategory).sendKeys(Keys.ENTER);
     }
 
     public void selectInstitutionType(String institutionType) {
 
-        Select select = new Select(
-                WaitUtils.waitForVisible(driver, ddlInstitutionType));
-
-        select.selectByVisibleText(institutionType);
+        WaitUtils.waitForVisible(driver, ddlInstitutionType).click();
+        WaitUtils.waitForVisible(driver, ddlInstitutionType).sendKeys(institutionType);
+        WaitUtils.waitForVisible(driver, ddlInstitutionType).sendKeys(Keys.ARROW_DOWN);
+        WaitUtils.waitForVisible(driver, ddlInstitutionType).sendKeys(Keys.ENTER);
     }
 
     //=========================
-    // Button Method
+    // Submit Button
     //=========================
 
     public void clickSubmit() {
 
-        WaitUtils.waitForVisible(driver, btnSubmit)
-                 .click();
+        WaitUtils.waitForVisible(driver, btnSubmit).click();
     }
 }
