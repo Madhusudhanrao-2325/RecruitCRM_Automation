@@ -16,52 +16,61 @@ public class RegistrationTest extends BaseTest {
 
     @DataProvider(name = "InstituteData")
     public Object[][] getInstituteData() {
-
         return ExcelUtils.getTestData("Sheet1");
-
     }
 
     @Test(dataProvider = "InstituteData")
-    public void instituteRegistration(String name,
-                                      String address,
-                                      String state,
-                                      String district,
-                                      String city,
-                                      String pincode) {
+    public void instituteRegistration(
+            String instituteName,
+            String address,
+            String state,
+            String district,
+            String city,
+            String pincode,
+            String phone,
+            String fax,
+            String instituteEmail,
+            String adminEmail,
+            String principalActivity,
+            String category,
+            String institutionType,
+            String firstName,
+            String lastName,
+            String designation,
+            String contactEmail,
+            String mobile,
+            String campus) {
 
         test = extent.createTest("Institute Registration Test");
 
-        try {
+        RegistrationPage page = new RegistrationPage(driver);
 
-            RegistrationPage page = new RegistrationPage(driver);
+        page.enterInstituteName(instituteName);
+        page.enterAddress(address);
+        page.selectState(state);
+        page.selectDistrict(district);
+        page.enterCity(city);
+        page.enterPincode(pincode);
 
-            test.info("Entering Institute Registration Details");
+        // Add the remaining methods in RegistrationPage as you implement them
+        // page.enterPhone(phone);
+        // page.enterFax(fax);
+        // page.enterInstituteEmail(instituteEmail);
+        // page.enterAdminEmail(adminEmail);
+        // page.selectPrincipalActivity(principalActivity);
+        // page.selectCategory(category);
+        // page.selectInstitutionType(institutionType);
+        // page.enterFirstName(firstName);
+        // page.enterLastName(lastName);
+        // page.enterDesignation(designation);
+        // page.enterContactEmail(contactEmail);
+        // page.enterMobile(mobile);
+        // page.enterCampus(campus);
 
-            page.enterInstituteName(name);
-            page.enterAddress(address);
-            page.selectState(state);
-            page.selectDistrict(district);
-            page.enterCity(city);
-            page.enterPincode(pincode);
+        page.clickSubmit();
 
-            page.clickSubmit();
+        Assert.assertTrue(driver.getCurrentUrl().contains("registration"));
 
-            test.info("Clicked Submit Button");
-
-            Assert.assertTrue(
-                    driver.getCurrentUrl().contains("registration"),
-                    "Registration failed or URL is incorrect."
-            );
-
-            test.pass("Institute Registration completed successfully.");
-
-            System.out.println("Registration Test Passed Successfully.");
-
-        } catch (Exception e) {
-
-            test.fail("Test Failed : " + e.getMessage());
-
-            throw e;
-        }
+        test.pass("Institute Registration completed successfully.");
     }
 }
