@@ -38,6 +38,12 @@ public class RegistrationPage {
     private By ddlInstitutionType = By.id("institutionType");
 
     //=========================
+    // Button Locator
+    //=========================
+
+    private By btnSubmit = By.xpath("//button[@type='submit']");
+
+    //=========================
     // Text Box Methods
     //=========================
 
@@ -107,5 +113,15 @@ public class RegistrationPage {
                 WaitUtils.waitForVisible(driver, ddlInstitutionType));
 
         select.selectByVisibleText(institutionType);
+    }
+
+    //=========================
+    // Button Method
+    //=========================
+
+    public void clickSubmit() {
+
+        WaitUtils.waitForVisible(driver, btnSubmit)
+                 .click();
     }
 }
